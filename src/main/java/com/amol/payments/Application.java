@@ -1,7 +1,5 @@
 package com.amol.payments;
 
-import org.apache.cxf.Bus;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,10 +19,7 @@ import org.springframework.context.annotation.Configuration;
 public class Application {
 	
 	
-	@Autowired
-    private Bus bus;
- 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
   

@@ -7,6 +7,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,14 +24,17 @@ import com.amol.payments.rest.vo.AccountVO;
 @Service
 public class AccountService {
 	
+	final static Logger logger = LogManager.getLogger(AccountService.class);
+	
+
+	
 	@Autowired
 	public AccountServiceHelper accountServiceHelper; 
 	
 	@GET
 	@Produces("application/json")
 	public AccountVO getAccount(@QueryParam("name") String name) {
-		System.out.println("Name:"+ name);
-		System.out.println("AccountServiceHelper:"+ accountServiceHelper);
+		logger.debug("Name:"+ name);
 		AccountVO account = new AccountVO();
 		account.setName(name);
 		return account;
@@ -40,8 +45,8 @@ public class AccountService {
 	@Consumes("application/json")
 	@Produces("application/json")
 	public AccountVO addAccount(AccountVO accountVO) {
-		System.out.println("POST->Name:"+ accountVO.getName());
-		System.out.println("POST->Balance:"+ accountVO.getBalance());
+		logger.debug("POST->Name:"+ accountVO.getName());
+		logger.debug("POST->Balance:"+ accountVO.getBalance());
 		return accountServiceHelper.addAccount(accountVO);
 		
 	}

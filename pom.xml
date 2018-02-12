@@ -49,6 +49,12 @@
 			<artifactId>jackson-jaxrs</artifactId>
 			<version>1.9.13</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-xc -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-xc</artifactId>
+			<version>1.9.13</version>
+		</dependency>
 
 		<dependency>
 			<groupId>mysql</groupId>
@@ -56,17 +62,21 @@
 			<version>5.1.6</version>
 		</dependency>
 
-		
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<!-- Amol: Following dependency is a must if you want to use log4j implementation.
+		 Spring boot will look for logback configuration as  it is the default. -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-logging</artifactId>
+			<artifactId>spring-boot-starter-log4j2</artifactId>
 		</dependency>
+		
 	</dependencies>
 
 	<dependencyManagement>
