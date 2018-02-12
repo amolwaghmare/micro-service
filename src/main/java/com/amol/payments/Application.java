@@ -1,21 +1,13 @@
 package com.amol.payments;
 
-import java.util.Arrays;
-
 import org.apache.cxf.Bus;
-import org.apache.cxf.endpoint.Server;
-import org.apache.cxf.jaxrs.JAXRSServerFactoryBean;
-import org.codehaus.jackson.jaxrs.JacksonJsonProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-
-import com.amol.payments.rest.service.AccountService;
 
 /**
  * @author Amol Waghmare
@@ -36,7 +28,14 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
   
-    @Bean
+/*   NOTE:
+ *  The configuration provided by below method can be avoided by adding below lines in application.yml file
+ *  cxf:
+      jaxrs:
+    			component-scan: true
+    			classes-scan-packages: com.amol.payments
+ *  BESIDES:  below method could not help with autowiring of ServiceHelper classes. Looks like an issue with 2 different application contexts.   
+ * @Bean
     public Server rsServer() {
     		System.out.println(" Inside rsServer.");
         JAXRSServerFactoryBean endpoint = new JAXRSServerFactoryBean();
@@ -48,5 +47,6 @@ public class Application {
         //endpoint.setFeatures(Arrays.asList(new Swagger2Feature()));
         return endpoint.create();
     }
-
+*/
+   
 }

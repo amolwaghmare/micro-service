@@ -23,12 +23,13 @@ import com.amol.payments.rest.vo.AccountVO;
 public class AccountService {
 	
 	@Autowired
-	private AccountServiceHelper accountServiceHelper; 
+	public AccountServiceHelper accountServiceHelper; 
 	
 	@GET
 	@Produces("application/json")
 	public AccountVO getAccount(@QueryParam("name") String name) {
 		System.out.println("Name:"+ name);
+		System.out.println("AccountServiceHelper:"+ accountServiceHelper);
 		AccountVO account = new AccountVO();
 		account.setName(name);
 		return account;

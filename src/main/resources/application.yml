@@ -1,3 +1,8 @@
+cxf:
+  jaxrs:
+    component-scan: true
+    classes-scan-packages: com.amol.payments,org.codehaus.jackson.jaxrs
+
 spring:
   application:
     name: spring-cloud-account-service
