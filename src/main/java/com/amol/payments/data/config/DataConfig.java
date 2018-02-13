@@ -7,6 +7,7 @@ import javax.sql.DataSource;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -28,6 +29,22 @@ import org.springframework.transaction.PlatformTransactionManager;
 public class DataConfig {
 
 	final static Logger logger = LogManager.getLogger(DataConfig.class);
+	
+	
+	@Value("${db.server}")
+	private String dbServer;
+	
+	@Value("${db.port}")
+	private String dbPort;
+	
+	//root
+	@Value("${db.user}")
+	private String dbUser;
+	
+	//mysql_Amol
+	@Value("${db.password}")
+	private String dbPassword;
+	
 
 	@Bean(name = "emf")
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
@@ -45,12 +62,13 @@ public class DataConfig {
 
 	@Bean
 	public DataSource dataSource() {
-		logger.debug(" Getting Datasource..");
+		logger.debug(" Getting Datasource..param.");
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/First_DB");
-		dataSource.setUsername("root");
-		dataSource.setPassword("mysql_Amol");
+		//dataSource.setUrl("jdbc:mysql://localhost:3306/First_DB");
+		dataSource.setUrl("jdbc:mysql://"+dbServer+":"+dbPort+"/First_DB");
+		dataSource.setUsername(dbUser);
+		dataSource.setPassword(dbPassword);
 		return dataSource;
 	}
 
