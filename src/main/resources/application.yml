@@ -1,7 +1,7 @@
 cxf:
   jaxrs:
     component-scan: true
-    classes-scan-packages: com.amol.payments,org.codehaus.jackson.jaxrs
+    classes-scan-packages: com.amol.payments,org.codehaus.jackson.jaxrs,org.apache.cxf.jaxrs.swagger,org.apache.cxf.metrics
 
 spring:
   application:

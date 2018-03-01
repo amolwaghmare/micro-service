@@ -9,6 +9,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import com.amol.payments.data.entity.Account;
+import com.amol.payments.data.repository.AccountRepository;
 import com.amol.payments.rest.service.helper.AccountServiceHelper;
 import com.amol.payments.rest.vo.AccountVO;
 
@@ -21,22 +23,24 @@ import com.amol.payments.rest.vo.AccountVO;
 public class AccountSeviceTest {
 	
 	@Mock
+	public AccountRepository accountRepository; 
+	
+
+	@InjectMocks
 	public AccountServiceHelper accountServiceHelper; 
 	
 	@Mock
-	AccountVO accountVO;
+	Account account;
 	
-	@InjectMocks
-	private AccountService accountService;
-	
+
 	@Test
 	public void testAddAccount() {
-		AccountVO accountVO = new AccountVO();
-		accountVO.setAccountNumber(1);
-		accountVO.setBalance("5000");
-		accountVO.setName("Account1");
-		Mockito.when(accountServiceHelper.addAccount(Mockito.any())).thenReturn(accountVO);
-		AccountVO accountVO1 = accountService.addAccount(new AccountVO());
+		Account account = new Account();
+		account.setAccountnumber(1);
+		account.setBalance(5000);
+		account.setName("Account1");
+		Mockito.when(accountRepository.save(account)).thenReturn(account);
+		AccountVO accountVO1 = accountServiceHelper.addAccount(new AccountVO());
 		assertTrue(accountVO1.getAccountNumber() >0);
 	}
 
