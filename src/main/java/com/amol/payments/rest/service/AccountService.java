@@ -15,11 +15,14 @@ import org.springframework.stereotype.Service;
 import com.amol.payments.rest.service.helper.AccountServiceHelper;
 import com.amol.payments.rest.vo.AccountVO;
 
+import io.swagger.annotations.Api;
+
 /**
  * @author Amol Waghmare
  *
  */
-
+//Swagger API documentation.
+@Api
 @Path("/account")
 @Service
 public class AccountService {
